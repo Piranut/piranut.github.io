@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+            <title>Piranut - Designing and Building Data Models with SQL</title>
+            <link rel="shortcut icon" type="image/png" href="thumbnails/logo.png">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+            <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+            <link rel="stylesheet" type="text/css" href="css/animsition.min.css">
+            <link rel="stylesheet" type="text/css" href="vanillabox/theme/bitter/vanillabox.css">
+            <link rel="stylesheet" type="text/css" href="css/lightbox.css">
+            <script type="text/javascript" src="bootstrap.min.js"></script>
+
+            <!-- Google Analytics -->
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-81117831-1', 'auto');
+              ga('send', 'pageview');
+            </script>
+    </head>
+    <body>      <!-- navbar -->
+                <div class= "navbar navbar-custom navbar-fixed-top">
+                <div class= "container">
+                <a href ='index.html' class='navbar-brand'><p class="logo">Piranut</p></a>
+                    <button class = 'navbar-toggle' data-toggle = 'collapse' data-target = '.navHeaderCollapse'>
+                        <span class = 'menu-bar'>MENU</span>
+                        <!-- <span class = 'icon-bar'></span> -->
+                        <!-- <span class = 'icon-bar'></span> -->
+                    </button>
+                    <div class= 'collapse navbar-collapse navHeaderCollapse'>
+                        <ul class = "nav navbar-nav navbar-right">
+                            <li><a href="index.html">PROJECTS</a></li>
+                            <li><a href="about.html">ABOUT</a></li>
+                            <li><a href="photography.html">PHOTOGRAPHY</a></li>
+                            <li><a href="resume.html">RESUME</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+
+                <div class="container-fluid">
+                     <div class="row Intro">
+                        <div class="col-md-8 col-md-offset-2">
+                            <p class="pageTitle">Designing and Building Data Models with SQL</p>
+                            <p class="pageSubtitle">KEEPING TRACK OF FITNESS CLUB MEMBERSHIP</p>
+                            <p class="text">Tracking attendance and membership at a fitness club can be cumbersome if you don't have a way of organizing and manipulating the data. I created a relational database model in SQL to allow for easy queries and modification of the data via Microsoft SQL Server.</p>
+                            <p class="text">I created 5 tables: MemberShipTypes, Members, Instructors, Classes and Attendances</p>
+                            <p class="text">Each table has both primary and foreign key constraints. This allows for relationships to be made between tables and easy data manipulation. I also included a series of queries to verify data accuracy. The script can run over and over again since I included the DROP statements at the beginning.</p>
+                            <br>
+                            <p class="text">Code is on <a href="https://github.com/Piranut/fitness_membership_tracking" target='_blank'>GitHub</a>.</p>
+                            <p class="text"><strong>Tools used</strong>: SQL, Microsoft SQL Server</p>
+                            <p class="line"><hr></p>
+
+                            <p class="pageSubtitle">ENTITY RELATIONSHIPS AND DATA NORMALIZATION</p>
+                            <p class="text">In this project, I worked with Ricky Diep to design a data model and a database that tracks participants in the 5k running program. I started by creating relationship diagrams to draw relationships between different tables in the database.</p>
+                            <p class="text">I normalized the data by creating multiple tables linked by ids instead of using one big table to hold all the data. This makes an efficient logical model with no data redundancy. After inserting data into each table in MS SQL Server, I created a front end access to the database using Microsoft Access which allows the database to be easily queried.</p>
+                            <p class="text"><strong>Tools used</strong>: SQL, Microsoft Visio, Microsoft SQL Server, Microsoft Access</p>
+                            <div class="sql-img">
+                                <img src="banners/sql1.png" alt="sql1" width='700'>
+                                <p class="caption">Entity Relationship Diagram</p>
+                                <img src="banners/sql2.png" alt="sql2" width='600'>
+                                <p class="caption">Third Normal Form Logical Model</p>
+                                <img src="banners/sql3.png" alt="sql3" width='500'>
+                                <p class="caption">Microsoft Access Front-end</p>
+                            </div>
+                            <p class="line"><hr></p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="footer">
+                   <p>&copy; 2016 Created by <span style="color: #606060;">Piranut</span></p>
+                </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="vanillabox/jquery.vanillabox-0.1.6.min.js"></script>
+<script src="vanillabox/jquery.vanillabox.js"></script>
+<script src="js/jquery.animsition.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

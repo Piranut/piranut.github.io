@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+      <script src="http://d3js.org/d3.v3.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="d3_style2.css">
+      <script type="text/javascript">
+          function draw(data) {
+
+          "use strict";
+          var margin = 75 ,
+              width = 1100 - margin,
+              height = 650 - margin,
+              padding = 25;
+
+          d3.select('body')
+            .append('h2')
+            .text('Percentage of Delayed Flights due to Carrier for Top US. Domestic Airlines (2003-2014)');
+
+            // svg canvas
+              var svg = d3.select('body')
+                        .append('svg')
+                          .attr('width',width+margin)
+                          .attr('height',height+margin)
+                        .append('g')
+                          .attr('class','chart');
+
+              // Add axes titles
+              svg.append('text')
+                  .attr('text-anchor','middle')    // this makes it easy to centre the text as the transform is applied to the anchor
+                  .attr("transform", "translate("+ (padding/2) +","+(height/2)+")rotate(-90)")     // text is drawn off the screen top left, move down and out and rotate
+                  .text('Percentage of Delayed Flights due to Carrier');
+
+              svg.append('text')
+                  .attr('text-achor', 'middle')
+                  .attr('transform', 'translate(' + (width/2) + "," + (height + 60) + ')' )
+                  .text('Year');
+
+
+              // Formats
+              var formatYear = d3.time.format('%Y');
+              var formatDecimal = d3.format(".2f");
+              var formatPercent = d3.format('%');
+
+
+
+            // Range of year column
+            var time_extent = d3.extent(data, function(d) {
+              return d['year'];
+            });
+            // Range of on_time column
+            var carr_delay_extent = d3.extent(data, function(d) {
+              return d['carrier_delay']
+            })
+
+            // Set the ranges
+            var year_scale = d3.time.scale()
+              .range([margin, width])       // from margin to width
+              .domain(time_extent)
+
+             var carr_delay_scale = d3.scale.linear()
+               .range([height, margin])       // from height to margin
+               .domain([0,6]);
+
+               // d3 axis object from year_scale
+               var year_axis = d3.svg.axis()
+               .scale(year_scale)
+               .ticks(d3.time.years, 1);
+
+               // d3 axis object from ontime_scale
+               var carr_delay_axis = d3.svg.axis()
+               .scale(carr_delay_scale)
+               .orient('left')
+               .innerTickSize(-width)
+               .tickPadding(10);
+
+               // append svg to page (year_axis)
+               d3.select('svg')
+                  .append('g')
+                  .attr('class','x axis')
+                  .attr('transform','translate(0,' + height + ')')    // move the x-axis downwards
+                  .call(year_axis);
+               // append svg to page (ontime_axis)
+               d3.select('svg')
+                  .append('g')
+                  .attr('class','y axis')
+                  .attr('transform','translate(' + margin + ',0)')
+                  .call(carr_delay_axis);
+
+
+
+
+                  // Define the line
+                  var line = d3.svg.line()
+                    .x(function(d) { return year_scale(d['year']); })
+                    .y(function(d) { return carr_delay_scale(d['carrier_delay']); });
+
+                  // Nest the entries by carrier_name, creating an array   (similar to GROUP BY in SQL)
+                  var dataNest = d3.nest()
+                    .key(function(d) { return d['carrier_name']; })
+                    .entries(data);
+
+                    // Color the lines by carrier_name
+                  var color = d3.scale.category10(); // set the colour scale
+
+                  // Loop through each carrier
+                  dataNest.forEach(function(d) {
+                    svg.append('path')
+                        .attr('class','line')
+                        .style('stroke', function() {
+                          return d.color = color(d.key)     // Add color dynamically, set stroke color for each key (carrier_name)
+                        })
+                        .attr("id", 'tag'+d.key.replace(/\s+/g, '')) // assign ID
+                        .attr('d',line(d.values));
+                  });
+
+                  // Add legend
+                  var legend = svg.append('g')
+                    .attr('class','legend')
+                    .attr("transform","translate(" + (width - 180)  + "," + 35 + ")")
+                    .selectAll('g')
+                    .data(dataNest)
+                    .enter()
+                    .append('g');
+
+
+
+                    // show/hide
+                    function showHide(d) {
+                          //Determine if current line is visible
+                            var active = d.active ? false :true,
+                            newOpacity = active ? 0 : 1,
+                            lightOpacity = active ? 0.5 : 1;
+                            // Hide/show elements based on ID
+                            d3.select("path[id='tag#']".replace('#',d.key.replace(/\s+/g, '')))
+                              .transition().duration(200)
+                              .style('opacity',newOpacity);
+                            d3.selectAll("circle[id='tag#']".replace('#',d.key.replace(/\s+/g,'')))
+                              .transition().duration(200)
+                              .style('opacity',newOpacity);
+                            d3.select(this)
+                              .transition().duration(200)
+                              .style('opacity',lightOpacity);
+                            // Update whether or not the elements are active
+                            d.active = active;
+                    }
+
+                      // emphasize path when mouseover
+                    function lineEmphasis(d) {
+                        d3.select("path[id='tag#']".replace('#',d.key.replace(/\s+/g, '')))
+                              .transition().duration(200)
+                              .style('stroke-width','5px');
+                    }
+                    // de-Emphasize path
+                    function linedeEmphasis(d) {
+                        d3.select("path[id='tag#']".replace('#',d.key.replace(/\s+/g, '')))
+                              .transition().duration(200)
+                              .style('stroke-width','1.5px');
+                    }
+
+
+                          // Append rectangles to legend class
+                          legend.append('rect')
+                            .attr('y', function(d,i) {
+                                  return i * 25;      // spacing between rects
+                            })
+                            .attr('width',10)
+                            .attr('height',10)
+                            .style('fill', function(d) {
+                              return d.color = color(d.key);
+                            })
+                            .on('mouseover',lineEmphasis)
+                            .on('mouseout',linedeEmphasis);
+
+                          // Append text
+                          legend.append('text')
+                          .attr('x', 18)
+                          .attr('y', function(d,i) {
+                            return (i * 25) + 10;
+                          })
+                          .on('click',showHide)
+                          .on('mouseover',lineEmphasis)
+                          .on('mouseout',linedeEmphasis)
+                          .text(function(d) {
+                            return d.key;
+                          });
+
+
+                  // Add tooltips with legend
+                  //  Define div for tooltip
+                  var tooltip_div  = d3.select('body').append('div')
+                      .attr('class','tooltip')
+                      .style('opacity',0);
+
+
+                    // Add circles
+                    d3.select('svg')
+                    .selectAll('circle')
+                    .data(data)
+                    .enter()
+                    .append('circle');
+
+                    d3.selectAll('circle')
+                        .attr('cx', function(d) {
+                          return year_scale(d['year']);
+                        })
+                        .attr('cy', function(d) {
+                          return carr_delay_scale(d['carrier_delay']);
+                        })
+                        .attr('r', 5)
+                        .attr("id", function(d) {
+                            return 'tag'+d['carrier_name'].replace(/\s+/g,'');
+                        })
+                        .attr('fill', function(d) {
+                          return d.color = color(d['carrier_name']);
+                        })
+                        .on('mouseover', function(d) {        // add mouseover event to create tooltips
+                          tooltip_div.transition()
+                                      .duration(200)
+                                      .style('opacity',.9);
+                          tooltip_div.html('<b>' + formatYear(d['year']) + '</b>' + '<br/>' + formatDecimal(d['carrier_delay']))
+                                      .style('left', (d3.event.pageX) + 'px')
+                                      .style('top', (d3.event.pageY - 40) + 'px');
+                        })
+                        .on('mouseout', function(d) {
+                          tooltip_div.transition()
+                                    .duration(500)
+                                    .style('opacity',0);
+                        });
+
+
+
+
+                  console.log(data[0]['carrier_name']);
+                  console.log(data[1]['carrier_name']);
+                  console.log(data[2]['carrier_name']);
+                  console.log(dataNest)
+
+
+
+
+
+
+
+
+
+
+          }
+
+      </script>
+</head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 to load the csv file
+    */
+    var format = d3.time.format('%Y');
+
+    d3.csv('flight_data4.csv', function(d) {
+      //transform data
+      d['year'] = format.parse(d['year']);
+      d['carrier_delay'] = +d['carrier_delay'];
+      d['arrivals'] = +d['arrivals'];
+      return d;
+    }, draw);
+
+  </script>
+</body>
+</html>

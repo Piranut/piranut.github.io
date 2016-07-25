@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+            <title>Piranut - Red Wine Exploratory Data Analysis</title>
+            <link rel="shortcut icon" type="image/png" href="thumbnails/logo.png">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+            <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+            <link rel="stylesheet" type="text/css" href="css/animsition.min.css">
+            <link rel="stylesheet" type="text/css" href="vanillabox/theme/bitter/vanillabox.css">
+            <link rel="stylesheet" type="text/css" href="css/lightbox.css">
+            <script type="text/javascript" src="bootstrap.min.js"></script>
+
+            <!-- Google Analytics -->
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-81117831-1', 'auto');
+              ga('send', 'pageview');
+            </script>
+    </head>
+    <body>      <!-- navbar -->
+                <div class= "navbar navbar-custom navbar-fixed-top">
+                <div class= "container">
+                <a href ='index.html' class='navbar-brand'><p class="logo">Piranut</p></a>
+                    <button class = 'navbar-toggle' data-toggle = 'collapse' data-target = '.navHeaderCollapse'>
+                        <span class = 'menu-bar'>MENU</span>
+                        <!-- <span class = 'icon-bar'></span> -->
+                        <!-- <span class = 'icon-bar'></span> -->
+                    </button>
+                    <div class= 'collapse navbar-collapse navHeaderCollapse'>
+                        <ul class = "nav navbar-nav navbar-right">
+                            <li><a href="index.html">PROJECTS</a></li>
+                            <li><a href="about.html">ABOUT</a></li>
+                            <li><a href="photography.html">PHOTOGRAPHY</a></li>
+                            <li><a href="resume.html">RESUME</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+
+                <div class="container-fluid">
+                     <div class="row Intro">
+                        <div class="col-md-8 col-md-offset-2">
+                            <p class="pageTitle">Red Wine Exploratory Data Analysis</p>
+                            <p class="pageSubtitle">RED WINE EXPLORATION</p>
+                            <p class="text">The Red Wine dataset contains 1599 red wines and 12 different chemical properties associated with them such as quality, pH, fixed acidity, volatile acidity and alcohol level. I picked this dataset to conduct exploratory data analysis (EDA) to identify the structures, patterns, outliers and relationships in the data.</p>
+                            <p class="text">I used RStudio to load in and investigate the data. I began by observing the structure of the data and the variables and summary statistics in order to get an idea of the questions that I could ask about the data.</p>
+                            <p class="text">My main goal was to determine which chemical properties most influence the quality of red wines by conducting univariate, bivariate and multivariate analysis using various types of graph.</p>
+                            <p class="subHeadings">KEY FINDINGS</p>
+                            <ul class='text bullets'>
+                                <li>75% of wines have pH less than 3.4</li>
+                                <li>Most wines score around 5.6 in terms of quality (values ranged from 3-8).</li>
+                                <li>Quality of wine correlates strongly with volatile acidity and alcohol.</li>
+                                <li>As wine quality increases, volatile acidity decreases (high of levels of volatile acidity can lead to an unpleasant, vinegar taste).</li>
+                                <li>Strong negative relationship between pH and total acidity.</li>
+                            </ul>
+                            <br>
+                            <p class="text"><a href="r_final_proj_cleaned.html" target='_blank'>See full analysis (Rmd file)</a></p>
+                            <p class="text"><strong>Supporting information and reference</strong>: <a href="red_wine_variables.txt" target="_blank">red_wine_variables.txt</a></p>
+                            <p class="text"><strong>Tools used</strong>: R, RStudio</p>
+                            <p class="line"><hr></p>
+
+                            <p class="sectionHeader">Sample Plots</p>
+                            <div class="image">
+                                <a href="banners/r_hist.png"><img src="banners/r_hist.png" alt='r_hist'></a>
+                                <a href="banners/r_boxplots.png"><img src="banners/r_boxplots.png" alt='r_boxplots'></a>
+                                <a href="banners/r_scatter.png"><img src="banners/r_scatter.png" alt='r_scatter'></a>
+                            </div>
+                            <p class="line"><hr></p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="footer">
+                   <p>&copy; 2016 Created by <span style="color: #606060;">Piranut</span></p>
+                </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="vanillabox/jquery.vanillabox-0.1.6.min.js"></script>
+<script src="vanillabox/jquery.vanillabox.js"></script>
+<script src="js/jquery.animsition.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>

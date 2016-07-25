@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+            <title>Piranut - Exploring Relationships Between Performance Metrics</title>
+            <link rel="shortcut icon" type="image/png" href="thumbnails/logo.png">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+            <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+            <link rel="stylesheet" type="text/css" href="css/animsition.min.css">
+            <link rel="stylesheet" type="text/css" href="vanillabox/theme/bitter/vanillabox.css">
+            <link rel="stylesheet" type="text/css" href="css/lightbox.css">
+            <script type="text/javascript" src="bootstrap.min.js"></script>
+
+            <!-- Google Analytics -->
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-81117831-1', 'auto');
+              ga('send', 'pageview');
+            </script>
+    </head>
+    <body>      <!-- navbar -->
+                <div class= "navbar navbar-custom navbar-fixed-top">
+                <div class= "container">
+                <a href ='index.html' class='navbar-brand'><p class="logo">Piranut</p></a>
+                    <button class = 'navbar-toggle' data-toggle = 'collapse' data-target = '.navHeaderCollapse'>
+                        <span class = 'menu-bar'>MENU</span>
+                        <!-- <span class = 'icon-bar'></span> -->
+                        <!-- <span class = 'icon-bar'></span> -->
+                    </button>
+                    <div class= 'collapse navbar-collapse navHeaderCollapse'>
+                        <ul class = "nav navbar-nav navbar-right">
+                            <li><a href="index.html">PROJECTS</a></li>
+                            <li><a href="about.html">ABOUT</a></li>
+                            <li><a href="photography.html">PHOTOGRAPHY</a></li>
+                            <li><a href="resume.html">RESUME</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+
+                <div class="container-fluid">
+                     <div class="row Intro">
+                        <div class="col-md-8 col-md-offset-2">
+                            <p class="pageTitle">Exploring Relationships Between Performance Metrics</p>
+                            <p class="pageSubtitle">THE LAHMAN BASEBALL DATABASE</p>
+                            <p class="text">The Lahman Baseball Database is a publicly available database containing statistics on pitching, hitting, fielding, team stats, salaries and many more for Major League Baseball from 1871 through 2014.</p>
+                            <p class="text">I was curious about the relationships between different performance metrics and the qualities or characteristics of baseball players with the highest salaries. Other investigations include the correlation coefficients between salaries and other metrics like the number of hits and games played. I also wondered where most of the players went to school.</p>
+                            <p class="subHeadings">CLEANING AND AGGREGATING DATA</p>
+                            <p class="text">I collected 7 data sets from the website with over 260,000 records of data. I began cleaning the data, formatting the dates and converting datatypes like strings to ints. I then used NumPy and Pandas to find summary statistics (mean,median,mode,..) of metrics for players with the highest salaries ( > 75th percentile) and those for players with low salaries ( < 25th percentile). Finally, I plotted the distributions with Matplotlib.</p>
+                            <p class="subHeadings">MAIN FINDINGS</p>
+                            <p class="text">Players with high salary on average have a higher number of games played between 1871-2015. They also have a significantly higher number of of hits, games played and homeruns between this period. Strong positive correlation between number of wins and hits, 0.892. Weak positive correlation between salary and votes received.</p>
+                            <p class="text">Code is on github <a href="https://github.com/Piranut/mlb_performance_metrics" target='_blank'>here</a>.</p>
+                            <p class="text"><strong>Data sets</strong>: <a href="http://www.seanlahman.com/baseball-archive/statistics/" target="_blank">http://www.seanlahman.com/baseball-archive/statistics/</a></p>
+                            <p class="text"><strong>Tools used</strong>: Python (Pandas/NumPy/Matplotlib), IPython Notebook</p>
+                            <p class="line"><hr></p>
+
+                            <p class="sectionHeader">Sample Plots</p>
+                            <div class="image">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="banners/mlb_high_salary_g.png"><img src="banners/mlb_high_salary_g.png" alt="high salary g"></a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="banners/mlb_low_salary_g.png"><img src="banners/mlb_low_salary_g.png" alt="low salary g"></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="banners/mlb_hits_high_salary.png"><img src="banners/mlb_hits_high_salary.png" alt="high salary hits"></a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="banners/mlb_hits_low_salary.png"><img src="banners/mlb_hits_low_salary.png" alt="low salary hits"></a>
+                                    </div>
+                                </div>
+                                <a href="banners/mlb_schools.png"><img src="banners/mlb_schools.png" alt="schools" width ='600px'></a>
+                            </div>
+                            <p class="line"><hr></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="footer">
+                   <p>&copy; 2016 Created by <span style="color: #606060;">Piranut</span></p>
+                </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="vanillabox/jquery.vanillabox-0.1.6.min.js"></script>
+<script src="vanillabox/jquery.vanillabox.js"></script>
+<script src="js/jquery.animsition.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
