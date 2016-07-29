@@ -378,7 +378,6 @@ h2 {
 }
 
 @media (max-width: 769px) {
-
     .text {
         padding-left: 0;
         padding-right: 0;
@@ -394,7 +393,6 @@ h2 {
     text-decoration: none;
     color:#4db8ff;
 }
-
 
 .text2 {
     font-family: 'Lora', serif;
