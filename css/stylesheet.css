@@ -18,31 +18,30 @@ img {
 }
 
 
-@media (min-width: 991px) {
-    .pics .row {
-        height: 340px;
-        float: left;
-    }
-}
-
 /*******     ANIMATE.CSS     *******/
 .index div:nth-child(1) {
   -webkit-animation-duration: 1s;
   -ms-animation-duration: 1s;
+  -moz-animation-duration: 1s;
   -webkit-animation-delay: .2s;
   -ms-animation-delay: .2s;
+  -moz-animation-delay: .2s;
 }
 .index div:nth-child(2){
   -webkit-animation-duration: 1s;
   -ms-animation-duration: 1s;
+  -moz-animation-duration: 1s;
   -webkit-animation-delay: .6s;
   -ms-animation-delay: .6s;
+  -moz-animation-delay: .6s;
 }
 .index div:nth-child(3) {
   -webkit-animation-duration: 1s;
   -ms-animation-duration: 1s;
+  -moz-animation-duration: 1s;
   -webkit-animation-delay: .6s;
   -ms-animation-delay: .6s;
+  -moz-animation-delay: .6s;
 }
 
 /*
